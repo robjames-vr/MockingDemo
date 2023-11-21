@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "wait-on": "^7.2.0",
+    "wiremock-captain": "^3.3.0"
+  },
+  "scripts": {
+    "mock": "yarn container && yarn initialiseMocks",
+    "initialiseMocks": "wait-on tcp:localhost:8080 && npx ts-node --esm wiremock.ts",
+    "container": "docker run -d -it --rm -p 8080:8080 --name wiremock wiremock/wiremock:latest"
+  }
+}
